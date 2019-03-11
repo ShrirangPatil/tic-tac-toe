@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn import preprocessing, neighbors, svm
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+#from sklearn.linear_model import LinearRegression
 import random
 
 def display(nplis):
@@ -55,6 +55,11 @@ def checkSums(nplis):
         for i in range(3):
             if diag[i] == 0:
                 return (i,2-i)
+    for cols in range(3):
+        if nplis[0,cols] + nplis[1,cols] + nplis[2,cols] in (-10,10):
+            for i in range(3):
+                if nplis[i,cols] == 0:
+                    return (i,cols)            
     return (-99,-99)
 
 pd.set_option('display.max_columns', None) # to display all the columns
